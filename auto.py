@@ -1,6 +1,9 @@
+import os
 import time
 from selenium import webdriver
 from get_text import get_text
+
+kakao_key = os.environ['KAKAO_KEY']
 
 def auto():
     # 웹드라이버 생성
@@ -19,7 +22,7 @@ def auto():
 
     # 비번 입력
     time.sleep(2)
-    driver.find_element_by_id('id_password_3').send_keys('')
+    driver.find_element_by_id('id_password_3').send_keys(kakao_key)
     driver.implicitly_wait(10)
 
     # 로그인 버튼 클릭
@@ -27,13 +30,8 @@ def auto():
     driver.find_element_by_class_name('submit').click()
     driver.implicitly_wait(10)
 
-    # 닫기 버튼 클릭
-    time.sleep(5)
-    driver.find_element_by_class_name('link_close').click()
-    driver.implicitly_wait(10)
-
     # 텍스트 입력
-    time.sleep(5)
+    time.sleep(3)
     driver.find_element_by_id('messageWrite').send_keys(get_text())
     driver.implicitly_wait(10)
 
@@ -53,6 +51,8 @@ def auto():
 
     # 드라이버 종료
     driver.close()
+
+    # Options.add_experimental_option("detach", True)
 
 
 if __name__ == "__main__":

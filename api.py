@@ -1,19 +1,22 @@
-from datetime import datetime, timedelta
+import os
 import requests
 import xmltodict
 import json
+from datetime import datetime, timedelta
 
+
+api_key = os.environ['API_KEY']
 
 def api():
-    secret_key = '1EoCXIYMTPGPGVCZUbr6ca55nv8OGYwG2we7r7ABSvxit5vqKnqYiw9WD3PuD2IdteK8ieAAtgLEmmWU6yQvwA%3D%3D'
-
+    # 오늘 날짜 불러오기
     today = datetime.today().strftime("%Y%m%d")
     yesterday = (datetime.today() - timedelta(1)).strftime("%Y%m%d")
 
+    # 어제 날짜 불러오기
     # today = (datetime.today() - timedelta(1)).strftime("%Y%m%d")
     # yesterday = (datetime.today() - timedelta(2)).strftime("%Y%m%d")
 
-    URL = f'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey={secret_key}&pageNo=1&numOfRows=10&startCreateDt={yesterday}&endCreateDt={today}'
+    URL = f'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey={api_key}&pageNo=1&numOfRows=10&startCreateDt={yesterday}&endCreateDt={today}'
     response = requests.get(URL)
     dict_data = xmltodict.parse(response.text)
     json_data = json.dumps(dict_data)
