@@ -41,6 +41,9 @@ def get_text():
 전북 → {area_today_data['전북']}({diff_calc(int(area_today_data['전북']), int(area_yesterday_data['전북']))})
 제주 → {area_today_data['제주']}({diff_calc(int(area_today_data['제주']), int(area_yesterday_data['제주']))})
 검역 → {area_today()['검역']}({diff_calc(int(area_today()['검역']), int(area_yesterday()['검역']))})
+
+* (+/-): 전날 대비 확진자 증감 표시
+** 주말(토,일)은 발송되지 않습니다
 """
 
     return text

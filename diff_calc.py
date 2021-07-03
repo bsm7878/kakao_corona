@@ -1,7 +1,3 @@
-
-
-
-
 def diff_calc(today, yesterday):
     if today > yesterday:
         return '+' + str(today-yesterday)

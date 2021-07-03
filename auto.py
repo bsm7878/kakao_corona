@@ -3,7 +3,8 @@ import time
 from selenium import webdriver
 from get_text import get_text
 
-kakao_key = os.environ['KAKAO_KEY']
+secret_email = os.environ['SECRET_EMAIL']
+secret_password = os.environ['SECRET_PASSWORD']
 
 def auto():
     # 웹드라이버 생성
@@ -17,12 +18,12 @@ def auto():
 
     # 아이디 입력
     time.sleep(2)
-    driver.find_element_by_id('id_email_2').send_keys('bsm7878@naver.com')
+    driver.find_element_by_id('id_email_2').send_keys(secret_email)
     driver.implicitly_wait(10)
 
     # 비번 입력
     time.sleep(2)
-    driver.find_element_by_id('id_password_3').send_keys(kakao_key)
+    driver.find_element_by_id('id_password_3').send_keys(secret_password)
     driver.implicitly_wait(10)
 
     # 로그인 버튼 클릭
